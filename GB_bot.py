@@ -1,4 +1,4 @@
-from logger import input_data, print_data, delete_data
+from logger import input_data, print_data, delete_data, correct_data
 
 def interface():
     print("Добрый день! Вы попали на бот для работы с телефонным справочником! \n 1 - запись данных \n 2 - вывод данных \n 3 - редактирование записи \n 4 - удаление записи")
@@ -13,6 +13,6 @@ def interface():
     elif command == 2:
         print_data()
     elif command == 3:
-        print('В настоящее время функция не доступна, приносим свои извинения')
+        correct_data()
     elif command == 4:
         delete_data()
