@@ -6,7 +6,7 @@ def input_data():
     phone = phone_data()
     adress = address_data()
     with open('phonebook.csv', 'a', encoding='utf-8') as f:
-        f.write(f'{name}; {surname}; {phone}; {adress};\n\n')
+        f.write(f'\n{name}; {surname}; {phone}; {adress};')
     
 
 def print_data():
@@ -32,9 +32,14 @@ def delete_data():
         print("Вы ввели некорректное значение, попробуйте еще раз")
         answer = int(input(f'Выберите удаление записи {lines_list[number-1]} (1) или отмена (2): '))
     if answer == 1:
-        print('В настоящее время функция не доступна, приносим свои извинения')
+        with open('phonebook.csv', 'r', encoding='utf-8') as f:
+            print(f'Запись {lines_list[number - 1]} удалена')
+        del lines_list[number - 1]
+        with open('phonebook.csv', 'w', encoding='utf-8') as f:
+            f.writelines(lines_list)
     elif answer == 2:
         print('Запись оставлена без изменений')
+
 
 
 
