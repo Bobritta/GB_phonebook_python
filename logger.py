@@ -14,3 +14,27 @@ def print_data():
     with open('phonebook.csv', 'r', encoding='utf-8') as f:
         lines_list = f.readlines()
         print(*lines_list)
+
+def delete_data():
+    with open('phonebook.csv', 'r', encoding='utf-8') as f:
+        print('\n На данный момент актуальна следующая версия справочника: \n')
+        lines_list = f.readlines()
+        for index, line in enumerate(lines_list, start=1):
+            print(f"{index}: {line.strip()}")
+        print('\n Какую запись Вы желаете удалить? Введите номер: \n')
+        number = int(input())
+    while number not in range(len(lines_list)+1):
+        print("Вы ввели некорректное значение, попробуйте еще раз")
+        number = int(input('Введите число: '))
+    print(f'Вы хотите удалить запись {lines_list[number-1]}для подтверждения введите 1, для отмены - 2 \n')
+    answer = int(input())
+    while answer not in range (1, 3):
+        print("Вы ввели некорректное значение, попробуйте еще раз")
+        answer = int(input(f'Выберите удаление записи {lines_list[number-1]} (1) или отмена (2): '))
+    if answer == 1:
+        print('В настоящее время функция не доступна, приносим свои извинения')
+    elif answer == 2:
+        print('Запись оставлена без изменений')
+
+
+
